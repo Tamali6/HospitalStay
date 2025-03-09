@@ -1,0 +1,40 @@
+# config.yaml - Model training parameters
+
+# Data settings
+data:
+  train_split: 0.7
+  valid_split: 0.15
+  test_split: 0.15
+  batch_size: 128
+  numerical_features: ["Available Extra Rooms in Hospital", "Age", "Admission_Deposit", "Visitors with Patient", "Bed Grade"]
+  categorical_features: ["case_id", "Hospital_code", "Hospital_type_code", "City_Code_Hospital", "Hospital_region_code",
+                         "Department", "Ward_Type", "Ward_Facility_Code", "patientid", "City_Code_Patient",
+                         "Type of Admission", "Severity of Illness"]
+
+# Model hyperparameters
+model:
+  input_dim: 512
+  hidden_layers: [256, 128, 64, 32]
+  dropout: 0.3
+  activation: "leakyrelu"
+
+# Training hyperparameters
+training:
+  num_epochs: 20
+  learning_rate: 0.001
+  patience: 10
+  optimizer: "adam"
+  loss_function: "smoothl1"
+  scheduler:
+    type: "cyclic"
+    base_lr: 0.0001
+    max_lr: 0.01
+    step_size_up: 5
+    mode: "triangular2"
+
+# Paths
+paths:
+  model_save_path: "model/hospital_stay_regression.pth"
+  best_model_path: "model/best_model.pth"
+  data_path: "data/hospital_stay_data.csv"
+

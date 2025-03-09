@@ -1,0 +1,35 @@
+Hospital Stay Prediction
+This project predicts hospital stay duration using a deep learning model built with PyTorch.
+
+Installation
+To install the required dependencies, run the following command:
+
+pip install -r requirements.txt
+
+Training
+To train the model, execute the following command:
+
+python src/train.py
+
+Testing
+To test the model, execute the following command:
+
+python src/test.py
+
+Directory Structure
+hospital_stay_prediction/
+│── data/
+│ ├── hospital_stay_data.csv
+│── model/
+│── src/
+│ ├── init.py
+│ ├── dataset.py
+│ ├── model.py
+│ ├── train.py
+│ ├── test.py
+│ ├── utils.py
+│── requirements.txt
+│── README
+│── run.sh
+
+
