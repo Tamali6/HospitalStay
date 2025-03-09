@@ -9,12 +9,12 @@ pip install -r requirements.txt
 Training
 To train the model, execute the following command:
 
-python src/train.py
+python src/train.py --config config.yaml
 
 Testing
 To test the model, execute the following command:
 
-python src/test.py
+python src/test.py --config config.yaml
 
 Directory Structure
 hospital_stay_prediction/
@@ -32,4 +32,8 @@ hospital_stay_prediction/
 │── README
 │── run.sh
 
-
+Author
+Tamali Banerjee
+banerjeetamali6@gmail.com
+GitHub: https://github.com/Tamali6
+LinkedIn: https://www.linkedin.com/in/tamali-banerjee-596001236
