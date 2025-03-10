@@ -96,10 +96,6 @@ def load_data(config) -> Tuple[DataLoader, DataLoader, DataLoader, int]:
     if 'Age' in df.columns:
         df['Age'] = apply_range_mapping(df['Age'])
     
-    # Drop specified columns mentioned in config before splitting into features and target
-    if 'drop_columns' in config["data"]:
-        drop_columns = config["data"]["drop_columns"]
-        df.drop(columns=drop_columns, errors='ignore', inplace=True)
 
     # Load or create label encoders
     label_encoder_save_path = config["paths"].get("label_encoder_save_path", None)
@@ -125,7 +121,13 @@ def load_data(config) -> Tuple[DataLoader, DataLoader, DataLoader, int]:
     if not all(col in df.columns for col in numerical_cols):
         raise ValueError(f"One or more numerical columns not found in dataset: {numerical_cols}")
     df[numerical_cols] = scaler.fit_transform(df[numerical_cols])
-
+    
+    # Drop specified columns mentioned in config before splitting into features and target
+    if 'drop_columns' in config["data"]:
+        drop_columns = config["data"]["drop_columns"]
+        df.drop(columns=drop_columns, errors='ignore', inplace=True)
+        
+        
     # Split features and target
     X = df.drop(columns=['Stay']).values
     y = df['Stay'].values
