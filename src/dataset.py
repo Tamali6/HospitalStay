@@ -101,7 +101,7 @@ def load_data(config) -> Tuple[DataLoader, DataLoader, DataLoader, int]:
     # Load or create label encoders
     label_encoder_save_path = config["paths"].get("label_encoder_save_path", None)
     
-    if label_encoder_save_path and os.path.exists(label_encoder_save_path):
+    if label_encoder_save_path and os.path.isfile(label_encoder_save_path):
         # If the encoder file exists, load it
         label_encoders = joblib.load(label_encoder_save_path)
         # Update df using the existing label encoders
