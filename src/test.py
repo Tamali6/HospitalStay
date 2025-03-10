@@ -3,7 +3,7 @@ import torch
 import torch.nn as nn
 from model import HospitalStayPredictor
 from dataset import load_data, reverse_range_mapping, decode_categorical_features
-from util import load_config
+from utils import load_config
 import joblib
 
 
