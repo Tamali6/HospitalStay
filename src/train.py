@@ -3,8 +3,8 @@ import torch
 import torch.nn as nn
 import torch.optim as optim
 from torch.utils.data import DataLoader
-from src.dataset import load_data
-from src.model import HospitalStayPredictor
+from dataset import load_data
+from model import HospitalStayPredictor
 from src.util import load_config
 import joblib
 
