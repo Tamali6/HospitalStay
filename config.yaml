@@ -36,7 +36,7 @@ training:
 
 # Paths
 paths:
-  path: "model/"
+  model_home_path: "model/"
   model_save_path: "model/hospital_stay_regression.pth"
   best_model_path: "model/best_model.pth"
   data_path: "data/hospital_stay_data.csv"
