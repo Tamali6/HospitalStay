@@ -169,7 +169,9 @@ def decode_categorical_features(input_data, label_encoders, categorical_cols):
     
     for i, col in enumerate(categorical_cols):
         if col in label_encoders:
-            decoded_data[col] = label_encoders[col].inverse_transform([input_data[i]])[0]
+            print(input_data[i])
+            #decoded_data[col] = label_encoders[col].inverse_transform([input_data[i]])[0]
+            decoded_data[col] = label_encoders[col].inverse_transform([int(input_data[i])])[0]
         else:
             decoded_data[col] = input_data[i]  # For numerical columns, just retain the value
     
