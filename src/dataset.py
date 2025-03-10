@@ -70,7 +70,16 @@ def load_data(config) -> Tuple[DataLoader, DataLoader, DataLoader, int]:
     # Returns: Tuple: Train, validation, test DataLoaders and input dimension (number of features)
     
     # Load dataset
-    df = pd.read_csv(config["paths"]["data_path"])
+    try:
+        df = pd.read_csv(config["paths"]["data_path"])
+    except FileNotFoundError:
+        print(f"Error: The file at {config['paths']['data_path']} was not found.")
+    except pd.errors.EmptyDataError:
+        print("Error: The file is empty.")
+    except pd.errors.ParserError:
+        print("Error: There was an issue parsing the CSV file.")
+    except Exception as e:
+        print(f"Unexpected error: {e}")
 
     # Fill missing values
     df.fillna(df.median(numeric_only=True), inplace=True)
