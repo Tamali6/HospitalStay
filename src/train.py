@@ -5,7 +5,7 @@ import torch.optim as optim
 from torch.utils.data import DataLoader
 from dataset import load_data
 from model import HospitalStayPredictor
-from src.util import load_config
+from util import load_config
 import joblib
 
 
