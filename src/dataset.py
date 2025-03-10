@@ -98,22 +98,10 @@ def load_data(config) -> Tuple[DataLoader, DataLoader, DataLoader, int]:
         df['Age'] = apply_range_mapping(df['Age'])
     
 
-    # Load or create label encoders
-    label_encoder_save_path = config["paths"].get("label_encoder_save_path", None)
+    # create label encoders
     
-    if label_encoder_save_path and os.path.isfile(label_encoder_save_path):
-        # If the encoder file exists, load it
-        label_encoders = joblib.load(label_encoder_save_path)
-        # Update df using the existing label encoders
-        for col, le in label_encoders.items():
-            if col in df.columns:
-                df[col] = le.transform(df[col].astype(str))  # Transform using the loaded encoder
-    else:
-        # If the encoder file does not exist, perform encoding and save the encoders
-        df, label_encoders = encode_categorical_features(df, config["data"]["categorical_features"])
-        if label_encoder_save_path:
-            # Save the newly created label encoders
-            joblib.dump(label_encoders, config["paths"]["label_encoder_save_path"])
+    df, label_encoders = encode_categorical_features(df, config["data"]["categorical_features"])
+    
 
     
     # Standardize numerical features
