@@ -68,6 +68,7 @@ if config.get("analyse_output", False):
 
     print("\nExample Predictions with Accuracy Check:")
     for i in range(total_predictions):
+    
         # Decode the inputs using the label encoders
         decoded_input = decode_categorical_features(example_inputs[i], label_encoders, config["data"]["categorical_features"])
 
