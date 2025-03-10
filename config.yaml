@@ -40,7 +40,7 @@ paths:
   model_save_path: "model/hospital_stay_regression.pth"
   best_model_path: "model/best_model.pth"
   data_path: "data/hospital_stay_data.csv"
-  label_encoder_save_path: "model/label_encoders.pkl"
+  label_encoder_save_path: "model/label_encoders.joblib"
 
 analyse_output: True # Change to False if you don"t want to analyze the output
 device: "cuda"  # "cuda", "cpu", or "auto" (automatically selects GPU if available)
