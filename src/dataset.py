@@ -72,6 +72,7 @@ def load_data(config) -> Tuple[DataLoader, DataLoader, DataLoader, int]:
     # Load dataset
     try:
         df = pd.read_csv(config["paths"]["data_path"])
+        print(f"The file at {config['paths']['data_path']} is loaded.")
     except FileNotFoundError:
         print(f"Error: The file at {config['paths']['data_path']} was not found.")
     except pd.errors.EmptyDataError:
