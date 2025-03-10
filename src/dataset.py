@@ -5,6 +5,7 @@ from torch.utils.data import DataLoader, TensorDataset
 from sklearn.preprocessing import StandardScaler, LabelEncoder
 from typing import Tuple
 from utils import load_config
+import joblib
 
 # Function to map categorical 'Stay' or 'Age' ranges to numerical values
 def range_mapping(categorical_value):
