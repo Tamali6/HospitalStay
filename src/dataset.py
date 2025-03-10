@@ -5,7 +5,7 @@ from sklearn.preprocessing import StandardScaler, LabelEncoder
 from src.util import load_config
 
 def load_data(config):
-    """Loads dataset and returns DataLoaders."""
+    # Loads dataset and returns DataLoaders.
     
     # Load dataset
     df = pd.read_csv(config["paths"]["data_path"])
