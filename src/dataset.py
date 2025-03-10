@@ -169,9 +169,15 @@ def decode_categorical_features(input_data, label_encoders, categorical_cols):
     
     for i, col in enumerate(categorical_cols):
         if col in label_encoders:
-            print(input_data[i])
+            #print(input_data[i])
             #decoded_data[col] = label_encoders[col].inverse_transform([input_data[i]])[0]
-            decoded_data[col] = label_encoders[col].inverse_transform([int(input_data[i])])[0]
+            if input_data[i] in label_encoders[col].classes_:
+                decoded_data[col] = label_encoders[col].inverse_transform([int(input_data[i])])[0]
+                print(f"Seen label {input_data[i]} in column {col}")
+            else:
+                print(f"Warning: Unseen label {input_data[i]} in column {col}")
+                decoded_data[col] = None  # Handle unknown labels gracefully
+
         else:
             decoded_data[col] = input_data[i]  # For numerical columns, just retain the value
     
