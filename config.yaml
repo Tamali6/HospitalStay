@@ -22,7 +22,7 @@ model:
 
 # Training hyperparameters
 training:
-  num_epochs: 5
+  num_epochs: 20
   learning_rate: 0.05
   patience: 10
   optimizer: "adam"  # Options: "adam", "sgd"

@@ -69,9 +69,6 @@ if config.get("analyse_output", False):
     print("\nExample Predictions with Accuracy Check:")
     for i in range(total_predictions):
     
-        # Decode the inputs using the label encoders
-        decoded_input = decode_categorical_features(example_inputs[i], label_encoders, config["data"]["categorical_features"])
-
         # Map the actual and predicted stay values to categorical ranges
         actual_range = reverse_range_mapping(float(example_targets[i]))
         predicted_range = reverse_range_mapping(float(example_predictions[i]))
@@ -82,7 +79,7 @@ if config.get("analyse_output", False):
             correct_predictions += 1
 
         # Print the results for each example
-        print(f"Decoded Input: {decoded_input}")
+
         print(f"Actual Stay: {actual_range} ({float(example_targets[i]):.2f} days)")
         print(f"Predicted Stay: {predicted_range} ({float(example_predictions[i]):.2f} days)")
         print(f"Match: {'✅' if is_correct else '❌'}\n")
