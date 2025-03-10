@@ -1,6 +1,6 @@
 import torch
 import torch.nn as nn
-from util import load_config
+from src.util import load_config
 
 class HospitalStayPredictor(nn.Module):
     def __init__(self, input_dim):

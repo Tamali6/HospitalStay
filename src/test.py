@@ -1,9 +1,9 @@
 import argparse
 import torch
 import torch.nn as nn
-from model import HospitalStayPredictor
-from dataset import load_data, reverse_range_mapping, decode_categorical_features
-from util import load_config
+from src.model import HospitalStayPredictor
+from src.dataset import load_data, reverse_range_mapping, decode_categorical_features
+from src.util import load_config
 import joblib
 
 
