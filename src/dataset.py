@@ -113,7 +113,7 @@ def load_data(config) -> Tuple[DataLoader, DataLoader, DataLoader, int]:
         df, label_encoders = encode_categorical_features(df, config["data"]["categorical_features"])
         if label_encoder_save_path:
             # Save the newly created label encoders
-            joblib.dump(label_encoders, config["model"]["path"])
+            joblib.dump(label_encoders, config["path"]["model_home_path"])
 
     
     # Standardize numerical features
