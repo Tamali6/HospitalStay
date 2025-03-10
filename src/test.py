@@ -24,8 +24,11 @@ print(f"\n Using device: {device}")
 _, _, test_loader, input_dim, label_encoders = load_data(config)
 
 # Initialize model & load weights
-model = HospitalStayPredictor(input_dim).to(device)
-model.load_state_dict(torch.load(config["paths"]["model_save_path"], map_location=device))
+#model = HospitalStayPredictor(input_dim).to(device)
+#model.load_state_dict(torch.load(config["paths"]["model_save_path"], map_location=device))
+# Load the entire model
+model = torch.load(config["paths"]["model_save_path"], map_location=device)
+
 
 
 model.eval()
