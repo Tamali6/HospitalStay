@@ -1,4 +1,4 @@
-# config.yaml - Model training parameters
+# config.yaml - coding parameters
 
 # Data settings
 data:
@@ -10,20 +10,22 @@ data:
   categorical_features: ["case_id", "Hospital_code", "Hospital_type_code", "City_Code_Hospital", "Hospital_region_code",
                          "Department", "Ward_Type", "Ward_Facility_Code", "patientid", "City_Code_Patient",
                          "Type of Admission", "Severity of Illness"]
+  drop_columns: ["case_id", "Available Extra Rooms in Hospital", "Ward_Facility_Code", "patientid" , "City_Code_Patient", "Severity of Illness", "Admission_Deposit"]
+
 
 # Model hyperparameters
 model:
   input_dim: 512
-  hidden_layers: [256, 128, 64, 32]
+  hidden_layers: [256, 128, 64, 32]  # Defines number & size of hidden layers
   dropout: 0.3
-  activation: "leakyrelu"
+  activation: "relu"  # Options: "relu", "leakyrelu", "gelu"
 
 # Training hyperparameters
 training:
   num_epochs: 20
   learning_rate: 0.001
   patience: 10
-  optimizer: "adam"
+  optimizer: "adam"  # Options: "adam", "sgd"
   loss_function: "smoothl1"
   scheduler:
     type: "cyclic"
@@ -37,4 +39,7 @@ paths:
   model_save_path: "model/hospital_stay_regression.pth"
   best_model_path: "model/best_model.pth"
   data_path: "data/hospital_stay_data.csv"
+  label_encoder_save_path: "model/label_encoders.pkl"
 
+analyse_output: True # Change to False if you don"t want to analyze the output
+device: "cuda"  # "cuda", "cpu", or "auto" (automatically selects GPU if available)
